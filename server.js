@@ -30,7 +30,7 @@ app.post('/timezone', function (req, res) {
   console.log(req.body);
   // console.log(moment(moment().format('YYYY-MM-DD')).utcOffset('-0500').format('YYYY-MM-DD'))
   console.log('====================================');
-  let fecha = moment().format('YYYY-MM-DD')
+  let fecha = moment().format('YYYY-MM-DD HH:mm')
   console.log(fecha);
   console.log(moment(moment(fecha)).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
   console.log('====================================');
