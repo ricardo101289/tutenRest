@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   res.status(200).send("Welcome to API REST")
 })
 
-app.post('/usuario', function (req, res) {
+app.post('/timezone', function (req, res) {
   console.log('====================================');
   console.log(req.body);
   console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
