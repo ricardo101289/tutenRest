@@ -29,7 +29,7 @@ app.post('/timezone', function (req, res) {
   console.log('====================================');
   console.log(req.body);
   // console.log(moment(moment().format('YYYY-MM-DD')).utcOffset('-0500').format('YYYY-MM-DD'))
-  let date = moment(moment().format('YYYY-MM-DD')).utcOffset('-0500').format('YYYY-MM-DD');
+  let date = moment(moment().utcOffset('-0500').format('YYYY-MM-DD'));
   console.log('====================================');
   // console.log("locale ", moment().add(1, 'days').format('YYYY-MM-DD'))
   console.log("locale ", moment().utcOffset('-0500').format('YYYY-MM-DD'))
