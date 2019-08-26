@@ -28,31 +28,22 @@ app.get('/', (req, res) => {
 app.post('/timezone', function (req, res) {
   console.log('====================================');
   console.log(req.body);
-  // console.log(moment(moment().format('YYYY-MM-DD')).utcOffset('-0500').format('YYYY-MM-DD'))
   console.log('====================================');
-  console.log(moment().format('YYYY-MM-DD HH:mm'));
-  console.log(moment().utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
+  
+  var mo = moment.parseZone(moment().format('YYYY-MM-DD')+"T"+req.body.hora+req.body.timezone).format();
+  console.log(mo);
+  var l = moment(mo);
+  console.log(l);
+  console.log(moment.utc(l).format())
+  var cont = moment('2019-08-26T17:30:00').utcOffset('-04:00"')
   console.log('====================================');
+  console.log("fecha a vconvertir: ", "2019-08-26T17:30:00")
+  console.log("hola ",cont);
+  console.log(moment(cont).format('YYYY-MM-DD HH:mm'));
   console.log('====================================');
-  let fecha = moment().format('YYYY-MM-DD HH:mm')
-  console.log(fecha);
-  console.log(moment(moment(fecha)).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
-  console.log('====================================');
-  let date = moment().utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm');
-  console.log("formato de salida: ", moment(moment(date).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
-  console.log('====================================');
-  // console.log("locale ", moment().add(1, 'days').format('YYYY-MM-DD'))
-  console.log("locale ", moment().utcOffset('-0500').format('YYYY-MM-DD'))
-  console.log("date ", date);
-  console.log(moment(moment(fecha).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'))
-  console.log(moment(moment(fecha).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
-  console.log(moment(moment().utcOffset(req.body.timezone).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'))
-  console.log(moment(moment(fecha).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'));
-  console.log(moment(fecha+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
-  console.log(moment(fecha+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'));
-  console.log('====================================');
-    // moment(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm')).utcOffset(req.body.timezone).format('HH:mm')
-  // console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
+  
+  // console.log(moment().format('YYYY-MM-DD HH:mm'));
+  // console.log(moment().utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
   console.log('====================================');
   if(!req.body.hora || !req.body.timezone) {
    respuesta = {
@@ -62,7 +53,7 @@ app.post('/timezone', function (req, res) {
    };
   }else {
     let hour = {
-     "time": moment(moment(date).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'),
+     "time": "yes",
      "timezone": "utc"
     };
     // moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm')
