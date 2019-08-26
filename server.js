@@ -41,6 +41,12 @@ app.post('/timezone', function (req, res) {
   console.log("hola ",cont);
   console.log(moment(cont).format('YYYY-MM-DD HH:mm'));
   console.log('====================================');
+
+  var s = "2019-08-26T17:30:00-04:00";
+  moment(s).utcOffset(s);
+  console.log('====================================');
+  console.log(moment(s).utcOffset(s));
+  console.log('====================================');
   
   // console.log(moment().format('YYYY-MM-DD HH:mm'));
   // console.log(moment().utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
