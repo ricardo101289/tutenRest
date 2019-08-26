@@ -45,6 +45,6 @@ app.post('/timezone', function (req, res) {
   res.send(respuesta);
  });
  
-http.createServer(app).listen(8002, () => {
+http.createServer(app).listen(process.env.PORT || 8002, () => {
   console.log('Server started at http://localhost:8002');
 });
