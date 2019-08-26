@@ -30,8 +30,8 @@ app.post('/timezone', function (req, res) {
   console.log(req.body);
   // console.log(moment(moment().format('YYYY-MM-DD')).utcOffset('-0500').format('YYYY-MM-DD'))
   console.log('====================================');
-  let fecha = moment().format('YYYY-MM-DD')+' '+req.body.hora
-  console.log(moment(fecha).format('HH:mm'));
+  let fecha = moment().format('YYYY-MM-DD')
+  console.log(fecha);
   console.log(moment(moment(fecha)).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
   console.log('====================================');
   let date = moment().utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm');
@@ -40,8 +40,10 @@ app.post('/timezone', function (req, res) {
   // console.log("locale ", moment().add(1, 'days').format('YYYY-MM-DD'))
   console.log("locale ", moment().utcOffset('-0500').format('YYYY-MM-DD'))
   console.log("date ", date);
-  console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
+  console.log(moment(moment(fecha).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'))
+  console.log(moment(moment(fecha).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
   console.log(moment(moment().utcOffset(req.body.timezone).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'))
+  console.log(moment(moment(fecha).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'));
   console.log('====================================');
     // moment(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm')).utcOffset(req.body.timezone).format('HH:mm')
   // console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
