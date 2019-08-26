@@ -28,7 +28,14 @@ app.get('/', (req, res) => {
 app.post('/timezone', function (req, res) {
   console.log('====================================');
   console.log(req.body);
-  console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
+  // console.log(moment(moment().format('YYYY-MM-DD')).utcOffset('-0500').format('YYYY-MM-DD'))
+  let date = moment(moment().format('YYYY-MM-DD')).utcOffset('-0500').format('YYYY-MM-DD');
+  console.log('====================================');
+  console.log("date ", date);
+  console.log(moment(moment(date).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
+  console.log('====================================');
+    // moment(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm')).utcOffset(req.body.timezone).format('HH:mm')
+  // console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
   console.log('====================================');
   if(!req.body.hora || !req.body.timezone) {
    respuesta = {
@@ -41,6 +48,7 @@ app.post('/timezone', function (req, res) {
      "time": moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'),
      "timezone": "utc"
     };
+    // moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm')
     respuesta = {
      error: false,
      codigo: 200,
