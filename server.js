@@ -35,7 +35,8 @@ app.post('/timezone', function (req, res) {
   // console.log("locale ", moment().add(1, 'days').format('YYYY-MM-DD'))
   console.log("locale ", moment().utcOffset('-0500').format('YYYY-MM-DD'))
   console.log("date ", date);
-  console.log(moment(moment(date).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
+  console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
+  console.log(moment(moment().utcOffset(req.body.timezone).format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'))
   console.log('====================================');
     // moment(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm')).utcOffset(req.body.timezone).format('HH:mm')
   // console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
