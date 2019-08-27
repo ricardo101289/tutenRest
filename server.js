@@ -31,7 +31,8 @@ app.post('/timezone', function (req, res) {
   console.log('====================================');
   console.log('====================================');
   console.log(req.body);
-  console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).tz('America/Guayaquil').format('YYYY-MM-DD HH:mm'))
+  // console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).tz('America/Guayaquil').format('YYYY-MM-DD HH:mm'))
+  console.log("zona, ", moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'))
   console.log('====================================');
   if(!req.body.hora || !req.body.timezone) {
    respuesta = {
