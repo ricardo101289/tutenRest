@@ -14,9 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
- 
 var users = ['oscar', 'juan', 'marcos']
-
 app.get('/users', (req, res) => {
   res.send(users)
 })
@@ -26,14 +24,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/timezone', function (req, res) {
-  console.log('====================================');
-  console.log("Ecuador: ",moment());
-  console.log('====================================');
-  console.log('====================================');
-  console.log(req.body);
-  // console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).tz('America/Guayaquil').format('YYYY-MM-DD HH:mm'))
-  console.log("zona, ", moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'))
-  console.log('====================================');
   if(!req.body.hora || !req.body.timezone) {
    respuesta = {
     error: true,
@@ -42,7 +32,7 @@ app.post('/timezone', function (req, res) {
    };
   }else {
     let hour = {
-     "time": moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'),
+     "time": moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'),
      "timezone": "utc"
     };
     respuesta = {
@@ -53,7 +43,6 @@ app.post('/timezone', function (req, res) {
     };
    
   }
-  
   res.send(respuesta);
  });
  
