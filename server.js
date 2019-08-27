@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 var moment = require('moment-timezone');
 var http = require('http')
 var app = express()
-
+moment.tz.setDefault("America/Guayaquil");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 app.post('/timezone', function (req, res) {
   console.log('====================================');
-  console.log(moment().tz('America/Guayaquil'));
+  console.log("Ecuador: ",moment());
   console.log('====================================');
   console.log('====================================');
   console.log(req.body);
