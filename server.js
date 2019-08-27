@@ -2,8 +2,8 @@ var express = require('express')
 const bodyParser = require('body-parser');
 var moment = require('moment-timezone');
 var http = require('http')
-var app = express()
-
+var app = express();
+moment("2013-11-18").tz("America/Toronto")
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -26,6 +26,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/timezone', function (req, res) {
+  console.log('====================================');
+  console.log(moment("2013-11-18").tz("America/Toronto").format('Z'));
+  console.log('====================================');
   console.log('====================================');
   console.log(req.body);
   console.log('====================================');
