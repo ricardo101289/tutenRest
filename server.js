@@ -2,8 +2,8 @@ var express = require('express')
 const bodyParser = require('body-parser');
 var moment = require('moment-timezone');
 var http = require('http')
-var app = express();
-moment("2013-11-18").tz("America/Toronto")
+var app = express()
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -27,32 +27,11 @@ app.get('/', (req, res) => {
 
 app.post('/timezone', function (req, res) {
   console.log('====================================');
-  console.log(moment("2013-11-18").tz("America/Toronto").format('Z'));
+  console.log(moment().tz('America/Guayaquil'));
   console.log('====================================');
   console.log('====================================');
   console.log(req.body);
-  console.log('====================================');
-  
-  var mo = moment.parseZone(moment().format('YYYY-MM-DD')+"T"+req.body.hora+req.body.timezone).format();
-  console.log(mo);
-  var l = moment(mo);
-  console.log(l);
-  console.log(moment.utc(l).format())
-  var cont = moment('2019-08-26T17:30:00').utcOffset('-04:00"')
-  console.log('====================================');
-  console.log("fecha a vconvertir: ", "2019-08-26T17:30:00")
-  console.log("hola ",cont);
-  console.log(moment(cont).format('YYYY-MM-DD HH:mm'));
-  console.log('====================================');
-
-  var s = "2019-08-26T17:30:00-04:00";
-  moment(s).utcOffset(s);
-  console.log('====================================');
-  console.log(moment(s).utcOffset(s));
-  console.log('====================================');
-  
-  // console.log(moment().format('YYYY-MM-DD HH:mm'));
-  // console.log(moment().utcOffset(req.body.timezone).format('YYYY-MM-DD HH:mm'));
+  console.log(moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'))
   console.log('====================================');
   if(!req.body.hora || !req.body.timezone) {
    respuesta = {
@@ -62,10 +41,9 @@ app.post('/timezone', function (req, res) {
    };
   }else {
     let hour = {
-     "time": "yes",
+     "time": moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm'),
      "timezone": "utc"
     };
-    // moment(moment().format('YYYY-MM-DD')+"T"+req.body.hora).utcOffset(req.body.timezone).format('HH:mm')
     respuesta = {
      error: false,
      codigo: 200,
