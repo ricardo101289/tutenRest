@@ -4,7 +4,9 @@ Desarrollo de un servicio REST, que pueda ser consumido por un WebApp. Este serv
 
 ## Stack
 Node.js v10.16.0
+
 Moment.js v 2.24.0
+
 Heroku
 
 ## Instalación
@@ -16,6 +18,8 @@ Run `npm install`
 Run `node server.js`
 
 ## Servicio publicado en heroku
+
 https://tuten-rest.herokuapp.com/
+
 https://tuten-rest.herokuapp.com/timezone
 
